@@ -69,7 +69,7 @@ namespace DLC_Manager
 
         public static void InitialGamePathCheck()
         {
-            var preferences = new IniFile("settings.ini");
+            var preferences = new IniFile("preferences.ini");
             if (preferences.KeyExists("GamePath"))
             {
                 if (CheckValidityPath(preferences.Read("GamePath"))==true)
