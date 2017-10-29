@@ -78,6 +78,13 @@ namespace DLC_Manager
             Utilities.InitialGamePathCheck();
         }
 
+        public void RefreshDisplay()
+        {
+            var preferences = new IniFile("preferences.ini");
+            DLC_XML.GenerateDLCList(preferences.Read("GamePath"), "", UseMods());
+            DLCListDisplay.AppendText(File.ReadAllText("dlclist.xml"));
+        }
+
         private void locateGameFolder_Click(object sender, RoutedEventArgs e)
         {
             Utilities.InitialGamePathCheck();

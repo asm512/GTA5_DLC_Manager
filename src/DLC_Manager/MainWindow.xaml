@@ -42,8 +42,10 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1" x:Name="rightPanel" Visibility="Visible">
                     <Controls:ToggleSwitch x:Name="useModsSwitch" Content="Use mods folder" Margin="0,14,0,0" Click="useModsSwitch_Click">
-
                     </Controls:ToggleSwitch>
+                    <RichTextBox x:Name="DLCListDisplay" IsReadOnly="True" Margin="10,10" Height="229.4">
+                        
+                    </RichTextBox>
                 </StackPanel>
             </Grid>
             <Button x:Name="userMessage" Margin="60,0,60,0" Background="#4C000000" Foreground="White" Height="35" Visibility="Hidden" BorderBrush="#4C000000">
