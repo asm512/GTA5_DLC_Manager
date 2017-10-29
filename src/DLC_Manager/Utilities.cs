@@ -90,6 +90,10 @@ namespace DLC_Manager
 
         public static void VanillaDLCList()
         {
+            if (File.Exists("dlclist.xml"))
+            {
+                File.Delete("dlclist.xml");
+            }
             Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("DLC_Manager.resources.dlclist.txt");
             FileStream fileStream = new FileStream("dlclist.xml", FileMode.CreateNew);
             for (int i = 0; i < stream.Length; i++)
