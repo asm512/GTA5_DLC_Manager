@@ -1,0 +1,57 @@
+﻿<Controls:MetroWindow x:Name="mainWindow" x:Class="DLC_Manager.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      Title="DLC Manager"
+                      Height="400"
+                      Width="700"
+                      Background="Gray" Loaded="mainWindow_Loaded" ResizeMode="NoResize">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="settings" Content="Preferences" Click="settings_Click" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <StackPanel>
+            <Grid Margin="0,0,0,30" Height="300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="l1Panel">
+                    <Button x:Name="locateGameFolder" Margin="20,20,20,10" Click="locateGameFolder_Click">
+                        LOCATE GAME FOLDER
+                    </Button>
+                    <StackPanel x:Name="leftPanel" Height="313">
+                        <TextBlock FontSize="40" HorizontalAlignment="Center" FontWeight="Bold">
+                            FUNCTIONS
+                        </TextBlock>
+                        <Button x:Name="revertVanilla" Margin="20,10,20,10" Click="revertVanilla_Click">
+                            REVERT TO VANILLA
+                        </Button>
+                        <Button x:Name="copyClipboard" Margin="20,10,20,10" Click="copyClipboard_Click">
+                            COPY TO CLIPBOARD
+                        </Button>
+                        <Button x:Name="exportNow" Margin="20,10,20,10" Click="exportNow_Click">
+                            EXPORT NOW
+                        </Button>
+                        <Button x:Name="exportAs" Margin="20,10,20,10" Click="exportAs_Click">
+                            EXPORT AS
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" x:Name="rightPanel" Visibility="Visible">
+                    <Controls:ToggleSwitch x:Name="useModsSwitch" Content="Use mods folder" Margin="0,14,0,0" Click="useModsSwitch_Click">
+
+                    </Controls:ToggleSwitch>
+                </StackPanel>
+            </Grid>
+            <Button x:Name="userMessage" Margin="60,0,60,0" Background="#4C000000" Foreground="White" Height="35" Visibility="Hidden" BorderBrush="#4C000000">
+                
+            </Button>
+        </StackPanel>
+
+    </Grid>
+
+
+</Controls:MetroWindow>
