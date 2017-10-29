@@ -42,7 +42,10 @@ namespace DLC_Manager
             string top = @"<?xml version=""1.0"" encoding=""UTF - 8""?>" + Environment.NewLine + "" + Environment.NewLine + "<SMandatoryPacksData>" + Environment.NewLine + "	<Paths>" + Environment.NewLine;
             string bottom = "	</Paths>" + Environment.NewLine + "</SMandatoryPacksData>";
             File.WriteAllText(exportPath, top, UTF8Encoding.UTF8);
-
+            if(Directory.GetDirectories(DLCPacks).Length > 15)
+            {
+                System.Windows.Forms.MessageBox.Show("DLC's exceed 15, game crashes during loading may be related to this depending on your game config");
+            }
             foreach(string folder in Directory.GetDirectories(DLCPacks))
             {
                 File.AppendAllText(exportPath, @"		<Item>dlcpacks:\" + Path.GetFileName(folder) + @"\</Item>" + Environment.NewLine);
