@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DLC_Manager
 {
@@ -42,9 +43,12 @@ namespace DLC_Manager
             string top = @"<?xml version=""1.0"" encoding=""UTF - 8""?>" + Environment.NewLine + "" + Environment.NewLine + "<SMandatoryPacksData>" + Environment.NewLine + "	<Paths>" + Environment.NewLine;
             string bottom = "	</Paths>" + Environment.NewLine + "</SMandatoryPacksData>";
             File.WriteAllText(exportPath, top, Encoding.UTF8);
-            if(Directory.GetDirectories(DLCPacks).Length > 15)
+            if(Directory.GetDirectories(DLCPacks).Length > 2)
             {
-                System.Windows.Forms.MessageBox.Show("DLC's exceed 15, game crashes during loading may be related to this depending on your game config");
+                MessageBox.Show("DLC Limit exceeds 15, crashes at strartup may be related to this",
+                "Possible DLC limit reached",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
             }
             foreach(string folder in Directory.GetDirectories(DLCPacks))
             {
