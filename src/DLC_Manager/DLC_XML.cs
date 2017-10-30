@@ -41,7 +41,7 @@ namespace DLC_Manager
             string DLCPacks = GetDLCPacks(gamePath, useModFolder);
             string top = @"<?xml version=""1.0"" encoding=""UTF - 8""?>" + Environment.NewLine + "" + Environment.NewLine + "<SMandatoryPacksData>" + Environment.NewLine + "	<Paths>" + Environment.NewLine;
             string bottom = "	</Paths>" + Environment.NewLine + "</SMandatoryPacksData>";
-            File.WriteAllText(exportPath, top, UTF8Encoding.UTF8);
+            File.WriteAllText(exportPath, top, Encoding.UTF8);
             if(Directory.GetDirectories(DLCPacks).Length > 15)
             {
                 System.Windows.Forms.MessageBox.Show("DLC's exceed 15, game crashes during loading may be related to this depending on your game config");
@@ -61,10 +61,16 @@ namespace DLC_Manager
             MainWindow mw = new MainWindow();
             GenerateDLCList(preferences.Read("GamePath"), "", mw.UseMods());
             System.Windows.Forms.Clipboard.SetText(File.ReadAllText("dlclist.xml"));
-            File.Delete("dlclist.xml");
+            CleanUpDLC();
         }
 
-
+        public static void CleanUpDLC()
+        {
+            if (File.Exists("dlclist.xml"))
+            {
+                File.Delete("dlclist.xml");
+            }
+        }
 
 
 
