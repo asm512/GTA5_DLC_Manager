@@ -28,8 +28,8 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="githubLink" Source="/images/metro_mahapps.png" MouseDown="mahapps_MouseDown" Width="100"></Image>
-                <TextBlock Grid.Column="1" Margin="0,75,0,0" FontWeight="Medium">Designed using MahApps for XAML</TextBlock>
+                <Image x:Name="githubLink" Source="resources/metro_logo.png" MouseDown="mahapps_MouseDown" Width="100"></Image>
+                <TextBlock x:Name="preferencesText" Grid.Column="1" Margin="0,75,0,0" FontWeight="Medium"></TextBlock>
 
             </Grid>
         </StackPanel>   

@@ -98,6 +98,7 @@ namespace DLC_Manager
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             LoadSettings();
+            preferencesText.Text = "Designed using MahApps for XAML" + Environment.NewLine + "Background image by Razed using NaturalVision Remastered";
         }
     }
 }

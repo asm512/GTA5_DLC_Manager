@@ -3,9 +3,12 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       Title="DLC Manager"
-                      Height="400"
+                      Height="500"
                       Width="700"
-                      Background="Gray" Loaded="mainWindow_Loaded" ResizeMode="NoResize">
+                      Loaded="mainWindow_Loaded" ResizeMode="NoResize">
+                    <Window.Background>
+                        <ImageBrush ImageSource="resources\36067960015_d09601e3a6_o.png" Stretch="UniformToFill"></ImageBrush>
+                    </Window.Background>
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button x:Name="settings" Content="Preferences" Click="settings_Click" />
@@ -13,7 +16,7 @@
     </Controls:MetroWindow.RightWindowCommands>
     <Grid>
         <StackPanel>
-            <Grid Margin="0,0,0,30" Height="300">
+            <Grid Margin="0,0,0,30" Height="400">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -22,7 +25,7 @@
                     <Button x:Name="locateGameFolder" Margin="20,20,20,10" Click="locateGameFolder_Click">
                         LOCATE GAME FOLDER
                     </Button>
-                    <StackPanel x:Name="leftPanel" Height="313">
+                    <StackPanel x:Name="leftPanel" Height="370">
                         <TextBlock FontSize="40" HorizontalAlignment="Center" FontWeight="Bold">
                             FUNCTIONS
                         </TextBlock>
@@ -38,19 +41,20 @@
                         <Button x:Name="exportAs" Margin="20,10,20,10" Click="exportAs_Click">
                             EXPORT AS
                         </Button>
+                        <Controls:ToggleSwitch x:Name="useModsSwitch" Content="     Use mods folder" Margin="0,0,13,0" Click="useModsSwitch_Click">
+                        </Controls:ToggleSwitch>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Grid.Column="1" x:Name="rightPanel" Visibility="Visible">
-                    <Controls:ToggleSwitch x:Name="useModsSwitch" Content="Use mods folder" Margin="0,14,0,0" Click="useModsSwitch_Click">
-                    </Controls:ToggleSwitch>
-                    <RichTextBox x:Name="DLCListDisplay" IsReadOnly="True" Margin="10,10" Height="229.4">
-                        
-                    </RichTextBox>
-                </StackPanel>
+                <ScrollViewer Grid.Column="1">
+                    <StackPanel Grid.Column="1" x:Name="rightPanel" Visibility="Visible">
+
+                        <!--<RichTextBox x:Name="DLCListDisplay" IsReadOnly="True" Margin="10,10" Height="229.4"></RichTextBox>-->
+                    </StackPanel>
+                </ScrollViewer>
             </Grid>
-            <Button x:Name="userMessage" Margin="60,0,60,0" Background="#4C000000" Foreground="White" Height="35" Visibility="Hidden" BorderBrush="#4C000000">
+            <TextBlock x:Name="userMessage" Margin="60,0,60,0" Background="Transparent" Foreground="White" Height="35" Visibility="Hidden" HorizontalAlignment="Center">
                 
-            </Button>
+            </TextBlock>
         </StackPanel>
 
     </Grid>

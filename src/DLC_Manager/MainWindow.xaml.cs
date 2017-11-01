@@ -50,24 +50,24 @@ namespace DLC_Manager
 
         public void UpdateFolderPanel()
         {
-            System.Windows.Controls.CheckBox box;
+            ToggleSwitch DLCSwitch;
             var preferences = new IniFile("preferences.ini");
-            foreach (string folder in Directory.GetDirectories(preferences.Read("GamePath")))
+            foreach (string folder in Directory.GetDirectories(DLC_XML.GetDLCPacks(preferences.Read("GamePath"), false)))
             {
-                box = new System.Windows.Controls.CheckBox();
-                box.Tag = folder;
-                box.Content = System.IO.Path.GetFileName(folder);
-                Thickness margin = box.Margin;
+                DLCSwitch = new MahApps.Metro.Controls.ToggleSwitch();
+                DLCSwitch.Tag = System.IO.Path.GetFileName(folder);
+                DLCSwitch.Content = System.IO.Path.GetFileName(folder);
+                Thickness margin = DLCSwitch.Margin;
                 margin.Top = 10;
-                box.Margin = margin;
-                rightPanel.Children.Add(box);
+                DLCSwitch.Margin = margin;
+                rightPanel.Children.Add(DLCSwitch);
             }
         }
 
         public async void InformUser(string error)
         {
             userMessage.Visibility = Visibility.Visible;
-            userMessage.Content = error;
+            userMessage.Text = error;
             await PutTaskDelay();
             userMessage.Visibility = Visibility.Hidden;
         }
@@ -76,18 +76,19 @@ namespace DLC_Manager
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Utilities.InitialGamePathCheck();
+            UpdateFolderPanel();
         }
 
         public void RefreshDisplay()
         {
             var preferences = new IniFile("preferences.ini");
             DLC_XML.GenerateDLCList(preferences.Read("GamePath"), "", UseMods());
-            DLCListDisplay.AppendText(File.ReadAllText("dlclist.xml"));
+            //DLCListDisplay.AppendText(File.ReadAllText("dlclist.xml"));
         }
 
         private void locateGameFolder_Click(object sender, RoutedEventArgs e)
         {
-            Utilities.InitialGamePathCheck();
+            Utilities.NewGamePath();
         }
 
         private void exportNow_Click(object sender, RoutedEventArgs e)
@@ -108,7 +109,7 @@ namespace DLC_Manager
             }
         }
 
-        async Task PutTaskDelay()
+        public async Task PutTaskDelay()
         {
             await Task.Delay(500);
         }

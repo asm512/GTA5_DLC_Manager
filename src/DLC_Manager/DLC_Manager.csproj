@@ -117,5 +117,8 @@
   <ItemGroup>
     <EmbeddedResource Include="resources\dlclist.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\36067960015_d09601e3a6_o.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
