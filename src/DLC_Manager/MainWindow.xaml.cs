@@ -28,6 +28,26 @@ namespace DLC_Manager
             InitializeComponent();
         }
 
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+
         public bool UseMods()
         {
             return Convert.ToBoolean(useModsSwitch.IsChecked);
@@ -37,6 +57,19 @@ namespace DLC_Manager
         {
             Preferences preferences = new Preferences();
             preferences.ShowDialog();
+        }
+
+        public string[] GetCheckedDLCs()
+        {
+            List<string> DLCs = new List<string>();
+            foreach (ToggleSwitch ts in FindVisualChildren<ToggleSwitch>(rightPanel))
+            {
+                if (ts.IsChecked == true)
+                {
+                    DLCs.Add(ts.Content.ToString());
+                }
+            }
+            return DLCs.ToArray();
         }
 
 
@@ -95,6 +128,7 @@ namespace DLC_Manager
         {
             var preferences = new IniFile("preferences.ini");
             DLC_XML.GenerateDLCList(preferences.Read("GamePath"), "", UseMods());
+            GetCheckedDLCs();
         }
 
         private void exportAs_Click(object sender, RoutedEventArgs e)
