@@ -43,7 +43,7 @@ namespace DLC_Manager
             string top = @"<?xml version=""1.0"" encoding=""UTF - 8""?>" + Environment.NewLine + "" + Environment.NewLine + "<SMandatoryPacksData>" + Environment.NewLine + "	<Paths>" + Environment.NewLine;
             string bottom = "	</Paths>" + Environment.NewLine + "</SMandatoryPacksData>";
             File.WriteAllText(exportPath, top, Encoding.UTF8);
-            if(Directory.GetDirectories(DLCPacks).Length > 2)
+            if(Directory.GetDirectories(DLCPacks).Length > 15)
             {
                 MessageBox.Show("DLC Limit exceeds 15, crashes at strartup may be related to this",
                 "Possible DLC limit reached",
@@ -64,7 +64,7 @@ namespace DLC_Manager
             var preferences = new IniFile("preferences.ini");
             MainWindow mw = new MainWindow();
             GenerateDLCList(preferences.Read("GamePath"), "", mw.UseMods());
-            System.Windows.Forms.Clipboard.SetText(File.ReadAllText("dlclist.xml"));
+            Clipboard.SetText(File.ReadAllText("dlclist.xml"));
             CleanUpDLC();
         }
 
