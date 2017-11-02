@@ -26,8 +26,20 @@ namespace DLC_Manager
             }
         }
 
-        public static void GenerateDLCList(string[] DLCs, bool useModFolder, string outputPath = "dlclist.xml")
+        public static void GenerateDLCList(string[] DLCs, bool useModFolder, string outputPath = "dlclist.xml", bool now = false)
         {
+            if (now)
+            {
+                var preferences = new IniFile("preferences.ini");
+                if (preferences.Read("ExportToCurrentDir") == "true")
+                {
+
+                }
+                else
+                {
+                    outputPath = preferences.Read("GamePath");
+                }
+            }
             string top = @"<?xml version=""1.0"" encoding=""UTF - 8""?>" + Environment.NewLine + "" + Environment.NewLine + "<SMandatoryPacksData>" + Environment.NewLine + "	<Paths>" + Environment.NewLine;
             string platforms = @"  		<Item>platform:\dlcPacks\mpBeach\</Item>" + Environment.NewLine + @"  		<Item>platform:\dlcPacks\mpBeach\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\mpBusiness\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\mpChristmas\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\mpValentines\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\mpBusiness2\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\mpHipster\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\mpIndependence\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\mpPilot\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\spUpgrade\</Item>" + Environment.NewLine + @"		<Item>platform:\dlcPacks\mpLTS\</Item>" + Environment.NewLine;
             string bottom = "	</Paths>" + Environment.NewLine + "</SMandatoryPacksData>";

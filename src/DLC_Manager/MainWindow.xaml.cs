@@ -132,7 +132,7 @@ namespace DLC_Manager
         private void exportNow_Click(object sender, RoutedEventArgs e)
         {
             var preferences = new IniFile("preferences.ini");
-            DLC_XML.GenerateDLCList(GetCheckedDLCs(), useModFolder: UseMods());
+            DLC_XML.GenerateDLCList(GetCheckedDLCs(), useModFolder: UseMods(), now:true);
             GetCheckedDLCs();
         }
 
