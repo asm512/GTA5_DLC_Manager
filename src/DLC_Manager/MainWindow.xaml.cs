@@ -150,7 +150,7 @@ namespace DLC_Manager
 
         public async Task PutTaskDelay()
         {
-            await Task.Delay(1000);
+            await Task.Delay(500);
         }
 
         private async void useModsSwitch_Click(object sender, RoutedEventArgs e)
