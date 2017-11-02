@@ -48,6 +48,11 @@ namespace DLC_Manager
             }
         }
 
+        public void UpdateSwitch(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         public bool UseMods()
         {
             return Convert.ToBoolean(useModsSwitch.IsChecked);
@@ -105,7 +110,7 @@ namespace DLC_Manager
             userMessage.Visibility = Visibility.Hidden;
         }
 
-        //DO checks on load here
+        //Do checks on load here
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Utilities.InitialGamePathCheck();
@@ -115,7 +120,7 @@ namespace DLC_Manager
         public void RefreshDisplay()
         {
             var preferences = new IniFile("preferences.ini");
-            DLC_XML.GenerateDLCList(preferences.Read("GamePath"), "", UseMods());
+            DLC_XML.GenerateDLCList(GetCheckedDLCs(), UseMods());
             //DLCListDisplay.AppendText(File.ReadAllText("dlclist.xml"));
         }
 
@@ -127,7 +132,7 @@ namespace DLC_Manager
         private void exportNow_Click(object sender, RoutedEventArgs e)
         {
             var preferences = new IniFile("preferences.ini");
-            DLC_XML.GenerateDLCList(preferences.Read("GamePath"), "", UseMods());
+            DLC_XML.GenerateDLCList(GetCheckedDLCs(), useModFolder: UseMods());
             GetCheckedDLCs();
         }
 
@@ -138,14 +143,14 @@ namespace DLC_Manager
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var preferences = new IniFile("preferences.ini");
-                    DLC_XML.GenerateDLCList(preferences.Read("GamePath"), dialog.SelectedPath, UseMods());
+                    DLC_XML.GenerateDLCList(GetCheckedDLCs(), UseMods(), dialog.SelectedPath + @"\dlclist.xml");
                 }
             }
         }
 
         public async Task PutTaskDelay()
         {
-            await Task.Delay(500);
+            await Task.Delay(1000);
         }
 
         private async void useModsSwitch_Click(object sender, RoutedEventArgs e)
@@ -166,7 +171,7 @@ namespace DLC_Manager
 
         private void copyClipboard_Click(object sender, RoutedEventArgs e)
         {
-            DLC_XML.CopyDLCToCLipboard();
+            DLC_XML.CopyDLCToCLipboard(GetCheckedDLCs());
         }
     }
 }

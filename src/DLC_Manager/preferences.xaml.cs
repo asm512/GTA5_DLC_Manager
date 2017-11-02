@@ -31,14 +31,6 @@ namespace DLC_Manager
             {
                 preferences.Write("AutoCopy", "false");
             }
-            if (autoExport.IsChecked == true)
-            {
-                preferences.Write("AutoExport", "true");
-            }
-            else
-            {
-                preferences.Write("AutoExport", "false");
-            }
             if (issueWarning.IsChecked == true)
             {
                 preferences.Write("IssueLimitWarning", "true");
@@ -60,13 +52,13 @@ namespace DLC_Manager
             {
                 autoCopy.IsChecked = false;
             }
-            if (preferences.Read("AutoExport") == "true")
+            if (preferences.Read("ExportToCurrentDir") == "true")
             {
-                autoExport.IsChecked = true;
+                ExportToCurrent.IsChecked = true;
             }
             else
             {
-                autoExport.IsChecked = false;
+                ExportToCurrent.IsChecked = false;
             }
             if (preferences.Read("IssueLimitWarning") == "true")
             {
@@ -98,7 +90,21 @@ namespace DLC_Manager
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             LoadSettings();
-            preferencesText.Text = "Designed using MahApps for XAML" + Environment.NewLine + "Background image by Razed using NaturalVision Remastered";
+            preferencesText.Text = "Designed using MahApps for XAML" + Environment.NewLine + "Background image by Razed using" + Environment.NewLine + "NaturalVision Remastered";
+        }
+
+        private void ExportToCurrent_Click(object sender, RoutedEventArgs e)
+        {
+            var preferences = new IniFile("preferences.ini");
+            if (ExportToCurrent.IsChecked == true)
+            {
+                preferences.Write("ExportToCurrentDir", "true");
+
+            }
+            else
+            {
+                preferences.Write("ExportToCurrentDir", "false");
+            }
         }
     }
 }

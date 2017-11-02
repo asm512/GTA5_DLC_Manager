@@ -14,11 +14,11 @@
 
     <Grid>
         <StackPanel>
-            <CheckBox x:Name="autoCopy" Margin="10,10">
+            <CheckBox x:Name="autoCopy" Margin="10,10" Visibility="Collapsed">
                 Automatically copy to clipboard
             </CheckBox>
-            <CheckBox x:Name="autoExport" Margin="10,10">
-                Automatically export to current folder
+            <CheckBox x:Name="ExportToCurrent" Margin="10,10" Click="ExportToCurrent_Click">
+                Export now = export to current folder
             </CheckBox>
             <CheckBox x:Name="issueWarning" Margin="10,10">
                 Show warning when exceeding 15 add-ons
