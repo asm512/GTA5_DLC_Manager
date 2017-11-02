@@ -1,3 +1,4 @@
+<!--This file was generated using an embedded resource meaning it has to be updated every time R* updates.-->
 <?xml version="1.0" encoding="UTF-8"?>
 
 <SMandatoryPacksData>
