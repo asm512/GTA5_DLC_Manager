@@ -88,9 +88,10 @@ namespace DLC_Manager
 
         public void UpdateFolderPanel()
         {
+            rightPanel.Children.Clear();
             ToggleSwitch DLCSwitch;
             var preferences = new IniFile("preferences.ini");
-            foreach (string folder in Directory.GetDirectories(DLC_XML.GetDLCPacks(preferences.Read("GamePath"), false)))
+            foreach (string folder in Directory.GetDirectories(DLC_XML.GetDLCPacks(preferences.Read("GamePath"), UseMods())))
             {
                 DLCSwitch = new MahApps.Metro.Controls.ToggleSwitch();
                 DLCSwitch.Tag = System.IO.Path.GetFileName(folder);
@@ -115,13 +116,6 @@ namespace DLC_Manager
         {
             Utilities.InitialGamePathCheck();
             UpdateFolderPanel();
-        }
-
-        public void RefreshDisplay()
-        {
-            var preferences = new IniFile("preferences.ini");
-            DLC_XML.GenerateDLCList(GetCheckedDLCs(), UseMods());
-            //DLCListDisplay.AppendText(File.ReadAllText("dlclist.xml"));
         }
 
         private void locateGameFolder_Click(object sender, RoutedEventArgs e)
@@ -162,6 +156,7 @@ namespace DLC_Manager
                 await PutTaskDelay();
                 useModsSwitch.IsChecked = false;
             }
+            UpdateFolderPanel();
         }
 
         private void revertVanilla_Click(object sender, RoutedEventArgs e)
