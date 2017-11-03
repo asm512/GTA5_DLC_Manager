@@ -50,7 +50,7 @@ namespace DLC_Manager
                 string[] files = Directory.GetFiles(path);
                 foreach (string file in files)
                 {
-                    if (file.Contains("GTA5.exe"))
+                    if (file.ToLower().Contains("gta5.exe"))
                     {
                         return true;
                     }
