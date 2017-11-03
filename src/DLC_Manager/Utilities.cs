@@ -43,6 +43,11 @@ namespace DLC_Manager
             }
         }
 
+        public static void NotifyInvalidPath()
+        {
+            System.Windows.Forms.MessageBox.Show("The path selected was invalid, path must be set to root game dir");
+        }
+
         public static bool CheckValidityPath(string path)
         {
             if (Directory.Exists(path))
@@ -56,13 +61,16 @@ namespace DLC_Manager
                     }
                     else
                     {
+                        NotifyInvalidPath();
                         return false;
                     }
                 }
+                NotifyInvalidPath();
                 return false;
             }
             else
             {
+                NotifyInvalidPath();
                 return false;
             }
         }
