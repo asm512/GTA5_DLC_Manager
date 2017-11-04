@@ -85,6 +85,10 @@ namespace DLC_Manager
             leftPanel.Visibility = Visibility.Visible;
         }
 
+        public void AddDLCSwitch(ToggleSwitch toggleSwitch)
+        {
+            rightPanel.Children.Add(toggleSwitch);
+        }
 
         public void UpdateFolderPanel()
         {
@@ -99,7 +103,7 @@ namespace DLC_Manager
                 Thickness margin = DLCSwitch.Margin;
                 margin.Top = 10;
                 DLCSwitch.Margin = margin;
-                rightPanel.Children.Add(DLCSwitch);
+                AddDLCSwitch(DLCSwitch);
             }
         }
 
