@@ -18,11 +18,11 @@ namespace DLC_Manager
         {
             if (useModFolder)
             {
-                return path + @"\mods\update\dlcpacks\";
+                return path + @"\mods\update\x64\dlcpacks\";
             }
             else
             {
-                return path + @"\update\dlcpacks\";
+                return path + @"\update\x64\dlcpacks\";
             }
         }
 

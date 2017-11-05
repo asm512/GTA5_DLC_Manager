@@ -90,7 +90,7 @@ namespace DLC_Manager
             rightPanel.Children.Add(toggleSwitch);
         }
 
-        public void UpdateFolderPanel()
+        public void UpdateFolderPanel(bool isChecked)
         {
             rightPanel.Children.Clear();
             ToggleSwitch DLCSwitch;
@@ -103,6 +103,7 @@ namespace DLC_Manager
                 Thickness margin = DLCSwitch.Margin;
                 margin.Top = 10;
                 DLCSwitch.Margin = margin;
+                DLCSwitch.IsChecked = isChecked;
                 AddDLCSwitch(DLCSwitch);
             }
         }
@@ -119,7 +120,7 @@ namespace DLC_Manager
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Utilities.InitialGamePathCheck();
-            UpdateFolderPanel();
+            UpdateFolderPanel(false);
         }
 
         private void locateGameFolder_Click(object sender, RoutedEventArgs e)
@@ -160,7 +161,7 @@ namespace DLC_Manager
                 await PutTaskDelay();
                 useModsSwitch.IsChecked = false;
             }
-            UpdateFolderPanel();
+            UpdateFolderPanel(false);
         }
 
         private void revertVanilla_Click(object sender, RoutedEventArgs e)
@@ -171,6 +172,16 @@ namespace DLC_Manager
         private void copyClipboard_Click(object sender, RoutedEventArgs e)
         {
             DLC_XML.CopyDLCToCLipboard(GetCheckedDLCs());
+        }
+
+        private void selectAll_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateFolderPanel(true);
+        }
+
+        private void DeSelectAll_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateFolderPanel(false);
         }
     }
 }

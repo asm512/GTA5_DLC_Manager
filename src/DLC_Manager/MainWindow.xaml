@@ -45,12 +45,27 @@
                         </Controls:ToggleSwitch>
                     </StackPanel>
                 </StackPanel>
-                <ScrollViewer Grid.Column="1">
-                    <StackPanel Grid.Column="1" x:Name="rightPanel" Visibility="Visible">
+                
+                <StackPanel Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="selectAll" Margin="20,20,20,10" Content="SELECT ALL" Click="selectAll_Click">
+                        </Button>
+                        <Button x:Name="DeSelectAll" Margin="20,20,20,10" Content="DESELECT ALL" Grid.Column="1" Click="DeSelectAll_Click">
+                        </Button>
+                    </Grid>
 
-                        <!--<RichTextBox x:Name="DLCListDisplay" IsReadOnly="True" Margin="10,10" Height="229.4"></RichTextBox>-->
-                    </StackPanel>
-                </ScrollViewer>
+                    <ScrollViewer Grid.Column="1" Height="343">
+                        <StackPanel Grid.Column="1" x:Name="rightPanel" Visibility="Visible">
+
+                            <!--<RichTextBox x:Name="DLCListDisplay" IsReadOnly="True" Margin="10,10" Height="229.4"></RichTextBox>-->
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+                
             </Grid>
             <TextBlock x:Name="userMessage" Margin="60,0,60,0" Background="Transparent" Foreground="White" Height="35" Visibility="Hidden" HorizontalAlignment="Center">
                 

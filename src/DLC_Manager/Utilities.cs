@@ -33,7 +33,7 @@ namespace DLC_Manager
                     if (CheckValidityPath(dialog.SelectedPath))
                     {
                         MainWindow mw = new MainWindow();
-                        mw.UpdateFolderPanel();
+                        mw.UpdateFolderPanel(false);
                     }
                     else
                     {
