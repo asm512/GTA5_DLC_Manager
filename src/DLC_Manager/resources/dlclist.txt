@@ -51,6 +51,7 @@
 		<Item>dlcpacks:\patchday14ng\</Item>
 		<Item>dlcpacks:\patchday15ng\</Item>
 		<Item>dlcpacks:\patchday16ng\</Item>
+		<Item>dlcpacks:\patchday17ng\</Item>
 	</Paths>	
 </SMandatoryPacksData>
 
