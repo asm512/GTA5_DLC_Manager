@@ -52,17 +52,11 @@ namespace DLC_Manager
         {
             if (Directory.Exists(path))
             {
-                string[] files = Directory.GetFiles(path);
-                foreach (string file in files)
+                foreach (string file in Directory.GetFiles(path))
                 {
                     if (file.ToLower().Contains("gta5.exe"))
                     {
                         return true;
-                    }
-                    else
-                    {
-                        NotifyInvalidPath();
-                        return false;
                     }
                 }
                 NotifyInvalidPath();

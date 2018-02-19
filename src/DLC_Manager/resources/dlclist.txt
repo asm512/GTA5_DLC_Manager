@@ -1,9 +1,9 @@
-<!--This file was generated using an embedded resource meaning it has to be updated every time R* updates.-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <SMandatoryPacksData>
 	<Paths>
-  	<Item>platform:\dlcPacks\mpBeach\</Item>
+  		<Item>platform:\dlcPacks\mpBeach\</Item>
 		<Item>platform:\dlcPacks\mpBusiness\</Item>
 		<Item>platform:\dlcPacks\mpChristmas\</Item>
 		<Item>platform:\dlcPacks\mpValentines\</Item>
@@ -48,10 +48,10 @@
 		<Item>dlcpacks:\mpgunrunning\</Item>
 		<Item>dlcpacks:\mpairraces\</Item>
 		<Item>dlcpacks:\mpsmuggler\</Item>
+		<Item>dlcpacks:\mpchristmas2017\</Item>
 		<Item>dlcpacks:\patchday14ng\</Item>
 		<Item>dlcpacks:\patchday15ng\</Item>
 		<Item>dlcpacks:\patchday16ng\</Item>
 		<Item>dlcpacks:\patchday17ng\</Item>
 	</Paths>	
 </SMandatoryPacksData>
-
